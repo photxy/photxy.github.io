@@ -1,104 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title> เหงา คับพี่น้อง</title>
+  <title>คิดถึง</title>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      background: black;
-      overflow: hidden;
+      background-color: white;
       height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-
-    canvas {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    #countdown, #finalText {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 5em;
-      font-family: monospace;
-      z-index: 1;
-      text-shadow: 2px 2px 4px #ff69b4;
-    }
-
-    #countdown {
-      display: none;
-    }
-
-    #finalText {
-      display: none;
-      font-size: 4em;
-      color: #ff69b4;
+    h1 {
+      font-size: 200px;
+      color: #ff4da6; /* สีชมพู */
+      font-family: 'Arial', sans-serif;
     }
   </style>
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
-  <div id="countdown"></div>
-  <div id="finalText">เหงา</div>
-
-  <script>
-    const canvas = document.getElementById('matrixCanvas');
-    const ctx = canvas.getContext('2d');
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const letters = " เหงา ".split("");
-    const fontSize = 18;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = new Array(columns).fill(1);
-
-    function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#FF69B4"; // สีชมพู
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    // เริ่มเอฟเฟกต์ไหลทันที
-    setInterval(drawMatrix, 50);
-
-    // รอ 10 วิ แล้วเริ่มนับถอยหลัง
-    setTimeout(() => {
-      let count = 3;
-      const countdownEl = document.getElementById('countdown');
-      countdownEl.style.display = 'block';
-      countdownEl.textContent = count;
-
-      const countdown = setInterval(() => {
-        count--;
-        if (count >= 0) {
-          countdownEl.textContent = count;
-        } else {
-          clearInterval(countdown);
-          countdownEl.style.display = 'none';
-          document.getElementById('finalText').style.display = 'block';
-        }
-      }, 1000);
-    }, 10000); // รอ 10 วินาทีก่อนเริ่มนับถอยหลัง
-  </script>
+  <h1>คิดถึง</h1>
 </body>
 </html>
